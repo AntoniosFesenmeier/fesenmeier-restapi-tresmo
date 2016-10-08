@@ -1,0 +1,14 @@
+{
+  "name": "fesenmeier-restapi-tresmo",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha test"
+  },
+  "dependencies": {
+    "restify" : "*",
+    "mongoose": "*"
+  }
+}
+
+
