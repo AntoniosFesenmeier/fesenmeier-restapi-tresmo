@@ -8,9 +8,7 @@ var wines = require('./controller/wines');
 var server = restify.createServer();
 
 
-server.use(restify.queryParser());
 server.use(restify.bodyParser());
-server.use(restify.CORS());
 server.use(function (req, res, next) {
     console.log(req.method + ' ' + req.url);
     return next();
@@ -29,23 +27,12 @@ server.listen(config.port, function () {
 });
 
 
-/*
- OPTIMIERUNGSMÖGLICHKEITEN
- - Erfassen der aufgerufenen Call in einem Log-File
- - HATEOAS einführen
- - ESLINT an Tresmo GuideLines anpassen
-
- */
-
-
+module.exports = server;
 
 /*
-TODO ENV Configurationen ???
-TODO Config nach 12 FACTOR APP use environment variables to configure your application - evtl: http://stackoverflow.com/questions/8332333/node-js-setting-up-environment-specific-configs-to-be-used-with-everyauth
-TODO Abhängigkeiten extern legen
-TODO HEROKU
-TODO TESTS!!!
-
-
-
+TODO
+    Configuration nach 12 Factor App (http://stackoverflow.com/questions/8332333/node-js-setting-up-environment-specific-configs-to-be-used-with-everyauth)
+    Prüfen dass alle Abhängigkeiten extern sind
+    Testdatenbank ebenfalls anch 12 Factor Configuration
+    HEROKU
  */

@@ -6,9 +6,14 @@
     "test": "mocha test"
   },
   "dependencies": {
-    "restify" : "*",
+    "restify": "*",
     "mongoose": "*"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.1.0",
+    "should": "^11.1.0",
+    "supertest": "^2.0.0"
   }
 }
-
-
