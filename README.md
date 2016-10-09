@@ -7,4 +7,5 @@ Bei der aktuellen Umsetzung der RestApi können folgende Punkte in Zukunft verbe
 * HATEOAS einführen
 * ESLINT an Tresmo Guidelines anpassen
   Da mir die "Tresmo"-Konfiguration für ESLint aktuell nicht zu Verfügung steht wurde lediglich eine Standard-Konfiguration mittels eslint   --init vorgenommen. 
+* Mocken der Datenbanken 
 
