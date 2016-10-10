@@ -8,7 +8,7 @@ var wines = require('./controller/wines');
 var server = restify.createServer();
 
 
-server.use(restify.bodyParser());
+server.use(restify.bodyParser({defaultCharset: 'utf-8'}));
 server.use(function (req, res, next) {
     console.log(req.method + ' ' + req.url);
     return next();
