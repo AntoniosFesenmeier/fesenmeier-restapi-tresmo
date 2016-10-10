@@ -12,6 +12,7 @@ function WinesController() {
             if (err) {
                 return res.send(400, {error: err});
             } else {
+                res.charSet('utf-8');
                 return res.send(200, result);
             }
         });

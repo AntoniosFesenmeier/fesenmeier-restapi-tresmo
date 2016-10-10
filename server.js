@@ -21,7 +21,7 @@ server.post('api/v1/wines', wines.createWine);
 server.put('api/v1/wines/:id', wines.editWine);
 server.del('api/v1/wines/:id', wines.delWine);
 
-var port = process.env.PORT || 3000;
+var port = process.env.TRESMO_PORT;
 server.listen(port, function () {
     console.log('Server started at Port: ' + port);
 });
@@ -32,7 +32,7 @@ module.exports = server;
 /*
 TODO
     Configuration nach 12 Factor App (http://stackoverflow.com/questions/8332333/node-js-setting-up-environment-specific-configs-to-be-used-with-everyauth) (https://www.youtube.com/watch?v=te5dA3xpgK0)
-    Prüfen dass alle Abhängigkeiten extern sind
     Testdatenbank ebenfalls anch 12 Factor Configuration
     HEROKU
+    Charset setzen auf UTF8 für alle calls
  */

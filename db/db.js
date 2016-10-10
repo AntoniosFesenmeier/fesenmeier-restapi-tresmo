@@ -3,10 +3,7 @@
  */
 /*eslint no-console: ["error", { allow: ["log"] }] */
 var mongoose = require('mongoose');
-//var config = require('../config');
-
 mongoose.connect(process.env.MONGODB_URI);
-//mongoose.connect(process.env.MONGODB_URI ||config.dbPath);
 var db = mongoose.connection;
 
 

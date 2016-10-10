@@ -1,5 +1,8 @@
 # fesenmeier-restapi-tresmo
 
+# Aufruf der api über HEROKU
+https://guarded-temple-58570.herokuapp.com/api/v1/wines
+
 # OPTIMIERUNGSMÖGLICHKEITEN
 Bei der aktuellen Umsetzung der RestApi können folgende Punkte in Zukunft verbessert werden:
 * Vollständiges Logging über Log-Files
