@@ -12,7 +12,7 @@ function WinesController() {
             if (err) {
                 return res.send(400, {error: err});
             } else {
-               // res.charSet('utf-8');
+                res.charSet('utf-8');
                 return res.send(200, result);
             }
         });
@@ -26,6 +26,7 @@ function WinesController() {
                 return res.send(400, {error: err});
             } else {
                 if (result.length > 0) {
+                    res.charSet('utf-8');
                     return res.send(200, result);
                 } else {
                     return res.send(400, {error: 'UNKNOWN_OBJECT'});
@@ -49,6 +50,7 @@ function WinesController() {
             if (err) {
                 return res.send(400, {'error': err});
             } else {
+                res.charSet('utf-8');
                 return res.send(201, result);
             }
         });
@@ -74,6 +76,7 @@ function WinesController() {
                     return res.send(400, {error: err});
                 } else {
                     if (result) {
+                        res.charSet('utf-8');
                         return res.send(200, result);
                     } else {
                         return res.send(400, {error: 'UNKNOWN_OBJECT'});
