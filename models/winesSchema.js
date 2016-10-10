@@ -15,9 +15,9 @@ module.exports = (function winesSchema() {
         description: {type: String, required: false}
     };
 
+
     var collectionName = 'wines';
     var winesSchema = mongoose.Schema(schema);
-  //  var Wines =
 
 
     return mongoose.model(collectionName, winesSchema);

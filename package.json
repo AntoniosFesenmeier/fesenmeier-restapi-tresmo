@@ -1,19 +1,38 @@
 {
   "name": "fesenmeier-restapi-tresmo",
-  "version": "0.0.1",
-  "scripts": {
-    "start": "node app.js",
-    "test": "mocha test"
+  "version": "1.0.0",
+  "description": "A simple restify api",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
   },
   "dependencies": {
-    "restify": "*",
-    "mongoose": "*"
-  },
-  "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "mocha": "^3.1.0",
-    "should": "^11.1.0",
-    "supertest": "^2.0.0"
-  }
+    "mongoose": "^4.6.3",
+    "restify": "^4.1.1",
+    "should": "^11.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AntoniosFesenmeier/fesenmeier-restapi-tresmo.git"
+  },
+  "keywords": [
+    "restify",
+    "mocha",
+    "chai"
+  ],
+  "author": "Antonios Fesenmeier",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AntoniosFesenmeier/fesenmeier-restapi-tresmo/issues"
+  },
+  "homepage": "https://github.com/AntoniosFesenmeier/fesenmeier-restapi-tresmo#readme"
 }

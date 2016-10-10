@@ -10,7 +10,7 @@ function WinesController() {
     that.getAllWines = function (req, res, next) {
         Wines.find({}, function (err, result) {
             if (err) {
-                return res.send(400, {'error': err});
+                return res.send(400, {error: err});
             } else {
                 return res.send(200, result);
             }
@@ -22,7 +22,7 @@ function WinesController() {
     that.getWineById = function (req, res, next) {
         Wines.find({id: parseInt(req.params.id)}, function (err, result) {
             if (err) {
-                return res.send(400, {error: 'UNKNOWN_OBJECT'});
+                return res.send(400, {error: err});
             } else {
                 if (result.length > 0) {
                     return res.send(200, result);
@@ -70,7 +70,7 @@ function WinesController() {
             {new: true},
             function (err, result) {
                 if (err) {
-                    return res.send(400, {'error': err});
+                    return res.send(400, {error: err});
                 } else {
                     if (result) {
                         return res.send(200, result);
@@ -86,7 +86,7 @@ function WinesController() {
     that.delWine = function (req, res, next) {
         Wines.findOneAndRemove({id: req.params.id}, function (err, result) {
             if (err) {
-                return res.send(400, {'error': err});
+                return res.send(400, {error: err});
             } else {
                 if (result) {
                     return res.send(200, {success: true});

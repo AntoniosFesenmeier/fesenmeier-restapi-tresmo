@@ -5,7 +5,8 @@ Bei der aktuellen Umsetzung der RestApi können folgende Punkte in Zukunft verbe
 * Vollständiges Logging über Log-Files
   Für den produktiven Einsatz sollten alle aufgerufenen REST-Calls über LOG-Files nachvollziehbar sein.
 * HATEOAS einführen
-* ESLINT an Tresmo Guidelines anpassen
-  Da mir die "Tresmo"-Konfiguration für ESLint aktuell nicht zu Verfügung steht wurde lediglich eine Standard-Konfiguration mittels eslint   --init vorgenommen. 
+* eslint an Tresmo Guidelines anpassen
+  Da mir die "Tresmo"-Konfiguration für eslint aktuell nicht zu Verfügung steht wurde lediglich eine Standard-Konfiguration mittels eslint --init vorgenommen.
+  Ebenso sollte eslint so konfiguriert werden, dass auch die Testklassen richtig behandelt werden.
 * Mocken der Datenbanken 
-
+* Beim Erstellen eines Weines muss derzeit eine ID angegeben werden, in Zukunft wäre es besser diese automatisch zu generieren

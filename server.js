@@ -31,7 +31,7 @@ module.exports = server;
 
 /*
 TODO
-    Configuration nach 12 Factor App (http://stackoverflow.com/questions/8332333/node-js-setting-up-environment-specific-configs-to-be-used-with-everyauth)
+    Configuration nach 12 Factor App (http://stackoverflow.com/questions/8332333/node-js-setting-up-environment-specific-configs-to-be-used-with-everyauth) (https://www.youtube.com/watch?v=te5dA3xpgK0)
     Prüfen dass alle Abhängigkeiten extern sind
     Testdatenbank ebenfalls anch 12 Factor Configuration
     HEROKU
