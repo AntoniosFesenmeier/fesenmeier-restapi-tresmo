@@ -3,7 +3,7 @@
  */
 /*eslint no-console: ["error", { allow: ["log"] }] */
 var restify = require('restify');
-var config = require('./config');
+//var config = require('./config');
 var wines = require('./controller/wines');
 var server = restify.createServer();
 
@@ -21,9 +21,9 @@ server.post('api/v1/wines', wines.createWine);
 server.put('api/v1/wines/:id', wines.editWine);
 server.del('api/v1/wines/:id', wines.delWine);
 
-
-server.listen(config.port, function () {
-    console.log('Server started at Port: ' + config.port);
+var port = process.env.PORT || 3000;
+server.listen(port, function () {
+    console.log('Server started at Port: ' + port);
 });
 
 

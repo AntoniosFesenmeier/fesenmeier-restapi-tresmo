@@ -6,7 +6,7 @@ process.env.NODE_ENV = 'test';
 
 var mongoose = require('mongoose');
 var Wines = require('../models/winesSchema');
-var config = require('../config.json');
+//var config = require('../config.json');
 
 
 var chai = require('chai');
