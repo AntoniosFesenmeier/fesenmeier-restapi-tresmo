@@ -8,11 +8,29 @@ function WinesController() {
 
 
     that.getAllWines = function (req, res, next) {
-        Wines.find({}, function (err, result) {
+        res.charSet('utf-8');
+
+        var error;
+        var invalidFilters = [];
+
+        for (var propName in req.query) {
+            if (propName !== 'name' && propName !== 'type' && propName !== 'year' && propName !== 'country') {
+                invalidFilters.push(propName);
+            }
+        }
+
+        if(invalidFilters.length > 0){
+            error = {error: 'UNKNOWN_FILTER'};
+            error.invalidFilters = invalidFilters;
+        }
+
+
+        Wines.find(req.query, function (err, result) {
             if (err) {
                 return res.send(400, {error: err});
-            } else {
-                res.charSet('utf-8');
+            } else if (error){
+                return res.send(400, error);
+            } else{
                 return res.send(200, result);
             }
         });
@@ -21,12 +39,12 @@ function WinesController() {
 
 
     that.getWineById = function (req, res, next) {
+        res.charSet('utf-8');
         Wines.find({id: parseInt(req.params.id)}, function (err, result) {
             if (err) {
                 return res.send(400, {error: err});
             } else {
                 if (result.length > 0) {
-                    res.charSet('utf-8');
                     return res.send(200, result);
                 } else {
                     return res.send(400, {error: 'UNKNOWN_OBJECT'});
@@ -38,6 +56,7 @@ function WinesController() {
 
 
     that.createWine = function (req, res, next) {
+        res.charSet('utf-8');
         var wine = {};
         wine.id = parseInt(req.body.id);
         wine.name = req.body.name;
@@ -50,7 +69,6 @@ function WinesController() {
             if (err) {
                 return res.send(400, {'error': err});
             } else {
-                res.charSet('utf-8');
                 return res.send(201, result);
             }
         });
@@ -59,6 +77,7 @@ function WinesController() {
 
 
     that.editWine = function (req, res, next) {
+        res.charSet('utf-8');
         Wines.findOneAndUpdate({id: parseInt(req.params.id)},
             {
                 $set: {
@@ -76,7 +95,6 @@ function WinesController() {
                     return res.send(400, {error: err});
                 } else {
                     if (result) {
-                        res.charSet('utf-8');
                         return res.send(200, result);
                     } else {
                         return res.send(400, {error: 'UNKNOWN_OBJECT'});
@@ -88,6 +106,7 @@ function WinesController() {
 
 
     that.delWine = function (req, res, next) {
+        res.charSet('utf-8');
         Wines.findOneAndRemove({id: req.params.id}, function (err, result) {
             if (err) {
                 return res.send(400, {error: err});

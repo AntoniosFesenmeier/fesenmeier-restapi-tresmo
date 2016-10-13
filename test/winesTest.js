@@ -6,7 +6,6 @@ process.env.NODE_ENV = 'test';
 
 var mongoose = require('mongoose');
 var Wines = require('../models/winesSchema');
-//var config = require('../config.json');
 
 
 var chai = require('chai');
@@ -14,19 +13,35 @@ var chaiHttp = require('chai-http');
 var server = require('../server');
 var should = chai.should();
 
+
 chai.use(chaiHttp);
+
 
 describe('drop wines collection', function(){
     Wines.collection.drop();
 });
+
 
 describe('getAllWines', function () {
     it('should list all wines on /wines GET', function (done) {
         chai.request(server)
             .get('/api/v1/wines')
             .end(function (err, res) {
-                //  res.body.length.should.equal(0);
+                res.body.length.should.equal(0);
                 res.should.have.status(200);
+                done();
+            });
+    });
+});
+
+
+describe('getAllWines', function () {
+    it('should fail caused by an invalid filter on /wines?filter=value GET', function (done) {
+        chai.request(server)
+            .get('/api/v1/wines?filter=invalid')
+            .end(function (err, res) {
+                res.body.error.should.equal('UNKNOWN_FILTER');
+                res.should.have.status(400);
                 done();
             });
     });
@@ -51,8 +66,22 @@ describe('createWine', function () {
                 res.body.name.should.equal(testWine.name);
                 res.body.type.should.equal(testWine.type);
                 res.body.year.should.equal(testWine.year);
+                res.body.country.should.equal(testWine.country);
                 res.body.description.should.equal(testWine.description);
                 res.should.have.status(201);
+                done();
+            });
+    });
+});
+
+
+describe('getAllWines', function () {
+    it('should return wine by an filter on /wines?country=germany GET', function (done) {
+        chai.request(server)
+            .get('/api/v1/wines?country=germany')
+            .end(function (err, res) {
+                res.body[0].country.should.equal('germany');
+                res.should.have.status(200);
                 done();
             });
     });
@@ -101,6 +130,7 @@ describe('editWine', function () {
                 res.body.name.should.equal(editWine.name);
                 res.body.type.should.equal(editWine.type);
                 res.body.year.should.equal(editWine.year);
+                res.body.country.should.equal(editWine.country);
                 res.body.description.should.equal(editWine.description);
                 res.should.have.status(200);
                 done();
@@ -126,20 +156,6 @@ describe('editWine', function () {
             .end(function (err, res) {
                 res.body.error.should.equals('UNKNOWN_OBJECT');
                 err.should.have.status(400);
-                done();
-            });
-    });
-});
-
-
-describe('getWinesById', function () {
-    it('should list all wines on /wines GET', function (done) {
-        chai.request(server)
-            .get('/api/v1/wines/10001')
-            .end(function (err, res) {
-                res.body.length.should.equal(1);
-                res.body[0].id.should.equal(10001);
-                res.should.have.status(200);
                 done();
             });
     });
