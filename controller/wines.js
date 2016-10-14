@@ -57,7 +57,7 @@ function WinesController() {
                     return res.send(200, result);
                 } else {
                     res.statusCode = 400;
-                    logger.warn(logHelper.getStatus(req, res) + ' UNKNOWN_OBJECT');
+                    logger.error(logHelper.getStatus(req, res) + ' UNKNOWN_OBJECT');
                     return res.send(400, {error: 'UNKNOWN_OBJECT'});
                 }
             }
@@ -112,7 +112,7 @@ function WinesController() {
                         logger.info(logHelper.getStatus(req, res));
                         return res.send(200, result);
                     } else {
-                        logger.warn(logHelper.getStatus(req, res) + ' UNKNOWN_OBJECT');
+                        logger.error(logHelper.getStatus(req, res) + ' UNKNOWN_OBJECT');
                         return res.send(400, {error: 'UNKNOWN_OBJECT'});
                     }
                 }
@@ -132,7 +132,7 @@ function WinesController() {
                     logger.info(logHelper.getStatus(req, res));
                     return res.send(200, {success: true});
                 } else {
-                    logger.warn(logHelper.getStatus(req, res) + ' UNKNOWN_OBJECT');
+                    logger.error(logHelper.getStatus(req, res) + ' UNKNOWN_OBJECT');
                     return res.send(400, {error: 'UNKNOWN_OBJECT'});
                 }
             }
