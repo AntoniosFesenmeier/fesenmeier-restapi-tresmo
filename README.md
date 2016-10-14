@@ -14,9 +14,7 @@ Bei der aktuellen Umsetzung der RestApi können folgende Punkte in Zukunft verbe
 
 
 * HATEOAS einführen
-* eslint an Tresmo Guidelines anpassen
-  Da mir die "Tresmo"-Konfiguration für eslint aktuell nicht zu Verfügung steht wurde lediglich eine Standard-Konfiguration mittels eslint --init vorgenommen.
-  Ebenso sollte eslint so konfiguriert werden, dass auch die Testklassen richtig behandelt werden.
+* eslint an Tresmo Guidelines anpassen </br>Da mir die "Tresmo"-Konfiguration für eslint aktuell nicht zu Verfügung steht wurde lediglich eine Standard-Konfiguration mittels eslint --init vorgenommen. Ebenso sollte eslint so konfiguriert werden, dass auch die Testklassen richtig behandelt werden.
 * Mocken der Datenbank für Tests
 * Beim Erstellen eines Weines muss derzeit eine ID angegeben werden, in Zukunft wäre es besser diese automatisch zu generieren
 * Nebenläufigkeit z.B. mit Docker-Prozessen und Queueing bei aufwändigen Operationen
