@@ -7,7 +7,7 @@ https://guarded-temple-58570.herokuapp.com/api/v1/wines
 - MONGODB_URI
 - PORT
 - LOG_LEVEL [fatal, error, warn, info, debug]
-- NODE_ENV [!NODE_ENV || development um lokales Logging zu aktivieren]
+- NODE_ENV [debug || development um lokales Logging zu aktivieren]
 
 # OPTIMIERUNGSMÖGLICHKEITEN
 Bei der aktuellen Umsetzung der RestApi können folgende Punkte in Zukunft verbessert werden:
