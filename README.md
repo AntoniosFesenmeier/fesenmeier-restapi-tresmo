@@ -21,3 +21,4 @@ Bei der aktuellen Umsetzung der RestApi können folgende Punkte in Zukunft verbe
 * Beim Erstellen eines Weines muss derzeit eine ID angegeben werden, in Zukunft wäre es besser diese automatisch zu generieren
 * Nebenläufigkeit z.B. mit Docker-Prozessen und Queueing bei aufwändigen Operationen
 * HEROKU Logging extern anbinden um entsprechende Analysen tätigen zu können.
+* Foreman integrieren damit ENV-Variablen auch lokal eingelesen werden.
