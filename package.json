@@ -18,8 +18,8 @@
     "mocha": "^3.1.0"
   },
   "scripts": {
-    "test": "mocha",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",

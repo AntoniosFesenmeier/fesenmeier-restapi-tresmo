@@ -22,7 +22,7 @@ winston.config.addColors({
 });
 
 
-if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'debug' || process.env.NODE_ENV === 'development') {
     logger.add(winston.transports.Console, {
         level: process.env.LOG_LEVEL,
         colorize: true,

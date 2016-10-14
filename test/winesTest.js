@@ -2,7 +2,6 @@
  * Created by Antonios Fesenmeier on 09.10.2016.
  */
 /* eslint-disable */
-process.env.NODE_ENV = 'test';
 
 var mongoose = require('mongoose');
 var Wines = require('../models/winesSchema');
