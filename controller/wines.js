@@ -6,6 +6,9 @@ function WinesController() {
     var that = this;
     var Wines = require('../models/winesSchema');
 
+    var log = require('../logging/logger');
+    var logger = log.getLogger({module: 'WinesController'});
+    var logHelper = require('../logging/logHelper');
 
     that.getAllWines = function (req, res, next) {
         res.charSet('utf-8');
@@ -19,7 +22,7 @@ function WinesController() {
             }
         }
 
-        if(invalidFilters.length > 0){
+        if (invalidFilters.length > 0) {
             error = {error: 'UNKNOWN_FILTER'};
             error.invalidFilters = invalidFilters;
         }
@@ -27,10 +30,14 @@ function WinesController() {
 
         Wines.find(req.query, function (err, result) {
             if (err) {
+                logger.error(logHelper.getStatus(req, res) + ' ' + err);
                 return res.send(400, {error: err});
-            } else if (error){
+            } else if (error) {
+                res.statusCode = 400;
+                logger.error(logHelper.getStatus(req, res) + ' ' + JSON.stringify(error));
                 return res.send(400, error);
-            } else{
+            } else {
+                logger.info(logHelper.getStatus(req, res));
                 return res.send(200, result);
             }
         });
@@ -42,11 +49,15 @@ function WinesController() {
         res.charSet('utf-8');
         Wines.find({id: parseInt(req.params.id)}, function (err, result) {
             if (err) {
+                logger.error(logHelper.getStatus(req, res) + ' ' + err);
                 return res.send(400, {error: err});
             } else {
                 if (result.length > 0) {
+                    logger.info(logHelper.getStatus(req, res));
                     return res.send(200, result);
                 } else {
+                    res.statusCode = 400;
+                    logger.warn(logHelper.getStatus(req, res) + ' UNKNOWN_OBJECT');
                     return res.send(400, {error: 'UNKNOWN_OBJECT'});
                 }
             }
@@ -67,8 +78,10 @@ function WinesController() {
 
         Wines.create(wine, function (err, result) {
             if (err) {
+                logger.error(logHelper.getStatus(req, res) + ' ' + err);
                 return res.send(400, {'error': err});
             } else {
+                logger.info(logHelper.getStatus(req, res));
                 return res.send(201, result);
             }
         });
@@ -92,11 +105,14 @@ function WinesController() {
             {new: true},
             function (err, result) {
                 if (err) {
+                    logger.error(logHelper.getStatus(req, res) + ' ' + err);
                     return res.send(400, {error: err});
                 } else {
                     if (result) {
+                        logger.info(logHelper.getStatus(req, res));
                         return res.send(200, result);
                     } else {
+                        logger.warn(logHelper.getStatus(req, res) + ' UNKNOWN_OBJECT');
                         return res.send(400, {error: 'UNKNOWN_OBJECT'});
                     }
                 }
@@ -109,11 +125,14 @@ function WinesController() {
         res.charSet('utf-8');
         Wines.findOneAndRemove({id: req.params.id}, function (err, result) {
             if (err) {
+                logger.error(logHelper.getStatus(req, res) + ' ' + err);
                 return res.send(400, {error: err});
             } else {
                 if (result) {
+                    logger.info(logHelper.getStatus(req, res));
                     return res.send(200, {success: true});
                 } else {
+                    logger.warn(logHelper.getStatus(req, res) + ' UNKNOWN_OBJECT');
                     return res.send(400, {error: 'UNKNOWN_OBJECT'});
                 }
             }

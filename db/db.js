@@ -6,14 +6,17 @@ var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 
+var log = require('../logging/logger');
+var logger = log.getLogger({module: 'server'});
+
 
 db.on('error', function(){
-    console.log('A database error occured...');
+    logger.fatal('A database error occured...');
 });
 
 
 db.once('open', function dbOpen(){
-    console.log('Database successfully connected...');
+    logger.info('Database successfully connected...');
 });
 
 

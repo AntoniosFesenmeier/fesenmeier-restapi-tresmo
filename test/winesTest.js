@@ -7,7 +7,6 @@ process.env.NODE_ENV = 'test';
 var mongoose = require('mongoose');
 var Wines = require('../models/winesSchema');
 
-
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var server = require('../server');
@@ -41,7 +40,7 @@ describe('getAllWines', function () {
             .get('/api/v1/wines?filter=invalid')
             .end(function (err, res) {
                 res.body.error.should.equal('UNKNOWN_FILTER');
-                res.should.have.status(400);
+                err.should.have.status(400);
                 done();
             });
     });

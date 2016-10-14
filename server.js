@@ -4,15 +4,13 @@
 /*eslint no-console: ["error", { allow: ["log"] }] */
 var restify = require('restify');
 var wines = require('./controller/wines');
+var log = require('./logging/logger');
+var logger = log.getLogger({module: 'server'});
 var server = restify.createServer();
 
 
 server.use(restify.bodyParser());
 server.use(restify.queryParser());
-server.use(function (req, res, next) {
-    console.log(req.method + ' ' + req.url);
-    return next();
-});
 
 
 server.get('api/v1/wines', wines.getAllWines);
@@ -23,7 +21,7 @@ server.del('api/v1/wines/:id', wines.delWine);
 
 var port = process.env.PORT || 3000;
 server.listen(port, function () {
-    console.log('Server started at Port: ' + port);
+    logger.info('Server started at Port: ' + port);
 });
 
 
