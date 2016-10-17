@@ -7,7 +7,7 @@ mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 
 var log = require('../logging/logger');
-var logger = log.getLogger({module: 'server'});
+var logger = log.getLogger({module: 'database'});
 
 
 db.on('error', function(){

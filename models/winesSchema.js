@@ -11,7 +11,7 @@ module.exports = (function winesSchema() {
         name: {type: String, required: true},
         year: {type: Number, required: true},
         country: {type: String, required: true},
-        type: {type: String, required: true},
+        type: {type: String, required: true, enum: ['red', 'rose', 'white']},
         description: {type: String, required: false}
     };
 
