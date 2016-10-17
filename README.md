@@ -1,22 +1,23 @@
 # fesenmeier-restapi-tresmo
 
-# Aufruf der api über HEROKU
+# Calling the api via Heroku
 https://guarded-temple-58570.herokuapp.com/api/v1/wines
 
-# Notwendige Umgebungsvariablen
+# Necessary enviroment variables
 - MONGODB_URI
 - PORT
 - LOG_LEVEL [fatal, error, warn, info, debug]
-- NODE_ENV [debug || development um lokales Logging zu aktivieren]
+- NODE_ENV [debug || development for local logging]
 
-# OPTIMIERUNGSMÖGLICHKEITEN
-Bei der aktuellen Umsetzung der RestApi können folgende Punkte in Zukunft verbessert werden:
+# Optimization options for the api
+For the future the following points can be improved:
+- Implementation of the HATEOAS principle 
+- Adapation of the eslint configuration to the Tresmo guidelines<br>Actual configuration was made via 'eslint --init'. The configuration should also adapted to fit mocha testfiles. 
+- Usage of a mocking tool for database independent tests
+- Automated generation of the ID for database objects
+- Usage of Docker and some queueing tools for better concurrency and disposability
+- Usage of some heroku addons for better analysis
 
-
-* HATEOAS einführen
-* eslint an Tresmo Guidelines anpassen </br>Da mir die "Tresmo"-Konfiguration für eslint aktuell nicht zu Verfügung steht wurde lediglich eine Standard-Konfiguration mittels eslint --init vorgenommen. Ebenso sollte eslint so konfiguriert werden, dass auch die Testklassen richtig behandelt werden.
-* Mocken der Datenbank für Tests
-* Beim Erstellen eines Weines muss derzeit eine ID angegeben werden, in Zukunft wäre es besser diese automatisch zu generieren
-* Nebenläufigkeit z.B. mit Docker-Prozessen und Queueing bei aufwändigen Operationen
-* HEROKU Logging extern anbinden um entsprechende Analysen tätigen zu können.
+# Optimization options for the specification
+- Definition of the tresmo coding guidelines
 
